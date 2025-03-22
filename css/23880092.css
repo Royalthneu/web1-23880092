@@ -33,3 +33,66 @@ h1 {
 #menu-header li.active a {
     color: var (--web1-blue)
 }
+
+#formSearch input {
+    width: 8rem;
+}
+
+#formSearch i {
+    color: var(--web1-green)
+}
+
+/* BANNER */
+#banner {
+    background-image: url('../images/images/bg-banner.gif');
+}
+
+#banner > div {
+    background: url('../images/images/logo_bg.png') left top no-repeat, 
+                url('../images/images/search_bg.png') right top no-repeat;
+    padding: 5rem 0 3rem 0;
+
+}
+
+#banner a {
+    background-color: var(--web1-pink);
+    font-family: 'Changa One', cursive;
+    font-size: 2rem;
+
+}
+
+#banner .carousel-item {
+    min-height: 19rem;
+}
+
+#banner .carousel-indicators li {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 1.2rem;
+    border: none;
+    margin: 0 0.25rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#banner .carousel-indicators li span {
+
+    position: absolute;
+    top: 0.3rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 0.6rem;
+    border: none;
+    text-align: left;
+    text-indent: -9999;
+}
+
+
+
+#banner .carousel-indicators li.active span {
+    background-color: var(--web1-green);
+}
+

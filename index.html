@@ -7,9 +7,12 @@
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            
         <!-- Font-awsome -->
         <script src="https://kit.fontawesome.com/e0f2415d85.js"
             crossorigin="anonymous"></script>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,28 +73,75 @@
                                 <a class="nav-link" href="#">Login</a>
                             </li>
                         </ul>
-                        <form class="d-flex my-2 my-lg-0">
+                        <form class="d-flex my-2 my-lg-0 border rounded-pill"
+                            id="formSearch">
                             <input
-                                class="form-control me-sm-2"
+                                class="form-control ms-3 border-0"
                                 type="text"
                                 placeholder="Search" />
                             <button
-                                class="btn btn-outline-success my-2 my-sm-0"
+                                class="btn my-2 my-sm-0 border-0"
                                 type="submit">
-                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </form>
                     </div>
                 </div>
             </nav>
-
         </header>
-        <main>
 
-        </main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
+        <!-- banner -->
+        <section class="container-fluid" id="banner">
+            <div class="container text-white text-center">
+                <div id="carousel-banner" class="carousel slide"
+                    data-bs-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li
+                            data-bs-target="#carousel-banner"
+                            data-bs-slide-to="0"
+                            class="active"
+                            aria-current="true"
+                            aria-label="First slide">
+                            <span>0</span>
+                        </li>
+                        <li
+                            data-bs-target="#carousel-banner"
+                            data-bs-slide-to="1"
+                            aria-label="Second slide">
+                            <span>1</span>
+                        </li>
+                        <li
+                            data-bs-target="#carousel-banner"
+                            data-bs-slide-to="2"
+                            aria-label="Third slide">
+                            <span>2</span>
+                        </li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <h1>Web Development <br>
+                                for everyone
+                            </h1>
+                            <a href="#"
+                                class="btn text-bold text-uppercase text-white rounded-4 px-4">
+                                see more
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <h1>23880092<br>
+                                NGUYEN THE TRUNG
+                            </h1>
+                        </div>
+                        <div class="carousel-item">
+                            <h1>Lap trinh web1<br>
+                                DTTX - HOC KY 1 - NAM HOC 2025-2026
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
         <!-- Bootstrap JavaScript Libraries -->
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
