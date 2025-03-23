@@ -121,6 +121,10 @@ h1 {
     border-color: rgba(0, 0, 0, 0.5);
 }
 
+#about-us h4 {
+    color:black;
+}
+
 /* news  */
 #news .date {
     background-color: var(--web1-green);
@@ -159,4 +163,12 @@ footer {
 #testimonials .col {
     background: url('../images/quot.png') left top no-repeat;
     padding-left: 3rem;
+}
+
+#testimonials .col div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Số dòng tối đa */
+    -webkit-box-orient: vertical;
 }
