@@ -172,3 +172,10 @@ footer {
     -webkit-line-clamp: 5; /* Số dòng tối đa */
     -webkit-box-orient: vertical;
 }
+
+/* Blogs */
+#blogs-categories li {
+    list-style-type: none;
+    background: url('../images/marker1.png') 0 0.25rem no-repeat;
+    padding: 0 0 0.75rem 1.5rem
+}
