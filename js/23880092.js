@@ -24,7 +24,7 @@ async function getAuthenticateToken(username, password) {
     let result = await response.json();
     if (response.status === 200) {
         return result.token;
-    } else {
-        throw new Error(result.message);
-    }
+    } 
+    throw new Error(result.message);
+    
 }
