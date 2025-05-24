@@ -135,7 +135,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <div id="responseMessage" class="text-danger"></div>
+                <div id="responseMessage" class="text-success"></div>
             </div>
             <div class="col">
                 <div class="text-end">
@@ -240,6 +240,7 @@
 
     <script
         src="https://www.google.com/recaptcha/enterprise.js?render=6LeVi0crAAAAACWNeBYdpW93zC5r_vgcpOUQeGkL"></script>
+    <script src="js/23880092.js"></script>
     <script>
         function onSubmit(e) {
             e.preventDefault();
@@ -259,16 +260,48 @@
                         let reponseMessase = document.getElementById('responseMessage');
                         reponseMessase.innerHTML = 'Error: Can not verify reCAPTCHA.';
                         reponseMessase.classList.remove();
-                        reponseMessase.classList.toggle('text-danger'); 
+                        reponseMessase.classList.toggle('text-danger');
                     }
                 });
             });
         }
-        function sendMail() {
-            document.getElementById('responseMessage').innerHTML = 'OK';
-            responseMessase.innerHTML = 'OK'
-            reponseMessase.classList.remove();
-            reponseMessase.classList.toggle('text-info'); 
+        async function sendMail() {
+            let reponseMessase = document.getElementById('responseMessage');
+
+            try {
+                let token = await getAuthoricateToken('test', '1c3cr3@m');
+                let postData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value,
+                    copy: document.getElementById('copy').checked ? 1 : 0
+                };
+                let response = await fetch('{AUTHORENTICATE_API}/send', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer` + token
+                    },
+                    body: JSON.stringify(postData),
+                });
+                let result = await response.json();
+
+                if (response.status === 200) {
+                    reponseMessase.innerHTML = result.message;
+                    reponseMessase.classList.remove();
+                    reponseMessase.classList.toggle('text-success');
+                } else {
+                    throw new Error(result.message);
+                }
+
+            } catch (error) {
+                reponseMessase.innerHTML = error;
+                reponseMessase.classList.remove();
+                reponseMessase.classList.toggle('text-danger');
+                return;
+            }
         }
     </script>
 </body>
