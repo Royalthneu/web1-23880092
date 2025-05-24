@@ -238,14 +238,15 @@
 
     <script src="js/map.js"></script>
 
-    <script
-        src="https://www.google.com/recaptcha/enterprise.js?render=6LeVi0crAAAAACWNeBYdpW93zC5r_vgcpOUQeGkL"></script>
+    <!-- <script
+        src="https://www.google.com/recaptcha/enterprise.js?render=6LePwEcrAAAAAFL0oCy_0r4ha7d-A0KKVHQukdB5"></script> -->
+        <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
 
     <script>
         function onSubmit(e) {
             e.preventDefault();
             grecaptcha.enterprise.ready(function () {
-                grecaptcha.enterprise.execute('6LeVi0crAAAAACWNeBYdpW93zC5r_vgcpOUQeGkL', { action: 'submit' }).then(async function (token) {
+                grecaptcha.enterprise.execute('6LePwEcrAAAAAFL0oCy_0r4ha7d-A0KKVHQukdB5', { action: 'submit' }).then(async function (token) {
                     let response = await fetch('verify.php', {
                         method: 'POST',
                         headers: {
