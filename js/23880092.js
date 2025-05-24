@@ -12,20 +12,19 @@ async function loadData(request, templateId, viewId) {
     view.innerHTML = template(context);    
 }
 
-async function getAuthoricateToken(username, password) {
-    let response = await fetch('{AUTHENTICATE_API}/authenticate', {
+async function getAuthenticateToken(username, password) {
+    let response = await fetch(`${AUTHENTICATE_API}/authenticate`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify({username, password})
+        body: JSON.stringify({ username, password })
     });
-    let result = response.json();
-    if(response.status === 200) {
+    let result = await response.json();
+    if (response.status === 200) {
         return result.token;
-    }
-    else {
-        throw new Error('result.message');
+    } else {
+        throw new Error(result.message);
     }
 }
