@@ -257,16 +257,16 @@
                     if (response.status = 200) {
                         sendMail();
                     } else {
-                        let reponseMessase = document.getElementById('responseMessage');
-                        reponseMessase.innerHTML = 'Error: Can not verify reCAPTCHA.';
-                        reponseMessase.classList.remove();
-                        reponseMessase.classList.toggle('text-danger');
+                        let responseMessage = document.getElementById('responseMessage');
+                        responseMessage.innerHTML = 'Error: Can not verify reCAPTCHA.';
+                        responseMessage.classList.remove();
+                        responseMessage.classList.toggle('text-danger');
                     }
                 });
             });
         }
         async function sendMail() {
-            let reponseMessase = document.getElementById('responseMessage');
+            let responseMessage = document.getElementById('responseMessage');
 
             try {
                 let token = await getAuthoricateToken('test', '1c3cr3@m');
@@ -289,17 +289,17 @@
                 let result = await response.json();
 
                 if (response.status === 200) {
-                    reponseMessase.innerHTML = result.message;
-                    reponseMessase.classList.remove();
-                    reponseMessase.classList.toggle('text-success');
+                    responseMessage.innerHTML = result.message;
+                    responseMessage.classList.remove();
+                    responseMessage.classList.toggle('text-success');
                 } else {
                     throw new Error(result.message);
                 }
 
             } catch (error) {
-                reponseMessase.innerHTML = error;
-                reponseMessase.classList.remove();
-                reponseMessase.classList.toggle('text-danger');
+                responseMessage.innerHTML = error;
+                responseMessage.classList.remove();
+                responseMessage.classList.toggle('text-danger');
                 return;
             }
         }
