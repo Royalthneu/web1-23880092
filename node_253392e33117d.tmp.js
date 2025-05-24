@@ -140,9 +140,9 @@
                 <button type="submit" class="btn btn-primary">
                     Send Email to us
                 </button>
+
             </div>
         </div>
-        <div id="responseMessage" class="text-danger text-center"></div>
         </form>
         </div>
     </section>
@@ -244,16 +244,8 @@
                     },
                     body: JSON.stringify({'g-token':token})
                 });
-                if (response.status=200) {
-                    sendMail();
-                } else {
-                    document.getElementById('responseMessage').innerHTML = 'Error: Can not verify reCAPTCHA.';
-                }
             });
           });
-        }
-        function sendMail(){
-            document.getElementById('responseMessage').innerHTML = 'OK';
         }
       </script>
 </body>

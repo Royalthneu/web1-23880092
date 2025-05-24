@@ -251,12 +251,12 @@
           <p class="text-black-50">by {{author}} in <a href="#"
               onclick="loadBlogs('blogs/categories/{{category.id}}')">
                   {{category.name}} </a> on {{formatDate date}}. <a href="#"
-                  onclick="loadBlogsDetails({{id}}, true)"
+                  onclick="loadBlogsDetails({id}, true)"
                   >Comments ({{comments.length}})</a></p>
           <img src="{{thumbpath}}" alt="{{name}}"
               class="float-start me-3 border rounded-4">
           <div class="text-black-50">{{summary}}</div>
-          <a href="#" class="btn btn-link readmore ps-0" onclick="loadBlogsDetails({{id}})">Read more</a>
+          <a href="#" class="btn btn-link readmore ps-0" onclick="loadBlogsDetails({id})">Read more</a>
       </div>
       {{/each}}
 
@@ -267,12 +267,12 @@
               {{#if isCurrent}}
               <li class="page-item disabled" aria-current="page">
                   <a class="page-link" href="#"
-                  onclick="loadBlogs('{{../../request}}', {{page}})">{{page}}</a>
+                  onclick="loadBlogs('{{../../request}}', {page})">{{page}}</a>
               </li>
               {{/if}}
               {{#unless isCurrent}}
               <li class="page-item"><a class="page-link" href="#"
-                  onclick="loadBlogs('{{../../request}}', {{page}})">{{page}}</a></li>
+                  onclick="loadBlogs('{{../../request}}', {page})">{{page}}</a></li>
               {{/unless}}
               {{/each}}
           </ul>
