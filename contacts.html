@@ -244,8 +244,8 @@
     <script>
         function onSubmit(e) {
             e.preventDefault();
-            grecaptcha.enterprise.ready(function () {
-                grecaptcha.enterprise.execute('6LePwEcrAAAAAFL0oCy_0r4ha7d-A0KKVHQukdB5', { action: 'submit' }).then(async function (token) {
+            grecaptcha.enterprise.ready(function() {
+                grecaptcha.enterprise.execute('6LePwEcrAAAAAFL0oCy_0r4ha7d-A0KKVHQukdB5', {action: 'submit' }).then(async function(token) {
                     let response = await fetch('verify.php', {
                         method: 'POST',
                         headers: {
