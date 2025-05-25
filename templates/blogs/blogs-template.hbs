@@ -2,15 +2,15 @@
 {{#each data}}
 <div class="clearfix py-3">
     <h3>{{name}}</h3>
-    <p class="text-black-50">by {{author}} in <a href="#"
+    <p class="text-black-50">by {{author}} in <a href="#blogs/categories/{{category.id}}"
         onclick="loadBlogs('blogs/categories/{{category.id}}')">
-            {{category.name}} </a> on {{formatDate date}}. <a href="#"
+            {{category.name}} </a> on {{formatDate date}}. <a href="#blog-{{id}}"
             onclick="loadBlogsDetails({{id}}, true)"
             >Comments ({{comments.length}})</a></p>
     <img src="{{thumbpath}}" alt="{{name}}"
         class="float-start me-3 border rounded-4">
     <div class="text-black-50">{{summary}}</div>
-    <a href="#" class="btn btn-link readmore ps-0" onclick="loadBlogsDetails({{id}})">Read more</a>
+    <a href="#blog-{{id}}" class="btn btn-link readmore ps-0" onclick="loadBlogsDetails({{id}})">Read more</a>
 </div>
 {{/each}}
 

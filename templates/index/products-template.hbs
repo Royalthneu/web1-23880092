@@ -6,7 +6,7 @@
         onmouseout="setActiveImagepath(this, '{{imagepath}}', false)">
         <h3>{{name}}</h3>
         <p class="text-black-50">{{summary}}</p>
-        <a class="readmore btn btn-link pt-0" href="#" 
+        <a class="readmore btn btn-link pt-0" href="#products/{{id}}" 
         onclick="loadData('products/{{id}}', 'details-template', 'content')">Read more</a>
     </div>
     {{/each}}

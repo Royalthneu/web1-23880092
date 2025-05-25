@@ -72,13 +72,17 @@
 
   <section id="banner-small"></section>
 
-  <section class="container py-5">
-    <div class="row">
-      <div class="col-8" id="blogs"></div>
+  <div id="content"></div>
 
-      <div class="col-4" id="blogs-categories"></div>
-    </div>
-  </section>
+  <div id="main">
+    <section class="container py-5">
+      <div class="row">
+        <div class="col-8" id="blogs"></div>
+
+        <div class="col-4" id="blogs-categories"></div>
+      </div>
+    </section>
+  </div>
 
   <!-- footer -->
   <footer class="text-center container-fluid text-white py-3">
@@ -138,10 +142,7 @@
 
   <!-- Optional: Place to the bottom of scripts -->
   <script>
-    const myModal = new bootstrap.Modal(
-      document.getElementById("modalId"),
-      options
-    );
+    const myModal = new bootstrap.Modal(document.getElementById("modalId"), options);
   </script>
 
   <!-- Bootstrap JavaScript Libraries -->
@@ -159,7 +160,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.runtime.min.js"
     integrity="sha512-WUaZk9J3oknQdKPT2wAfA0gEBG2371l1ACjiynLA/X28p07n1u59VFk7q1i83/bo7N9rqVdYKlnvwAAiwL36jQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="js/handlebars-pagination-helper.min.js"></script> <!-- Để trên handlebar do handlebars sử dụng pagination -->
+  <script src="js/handlebars-pagination-helper.min.js"></script>
+  <!-- Để trên handlebar do handlebars sử dụng pagination -->
   <script src="js/blogs.templates.min.js"></script>
 
   <script src="js/23880092.min.js"></script>
@@ -191,21 +193,50 @@
       var view = document.getElementById("blogs");
       view.innerHTML = template(context);
     }
+
     checkLogin();
-    loadBlogs("blogs");
-    loadData(
-      "blogs-categories",
-      "blogs-categories-template",
-      "blogs-categories"
-    );
+    if (location.hash.startsWith("#blog-")) {
+      const blogId = location.hash.replace("#blog-", "");
+      loadBlogsDetails(blogId);
+    } else {
+      loadBlogs("blogs");
+    }
+    loadData("blogs-categories", "blogs-categories-template", "blogs-categories");
 
     async function loadBlogsDetails(blogId, gotoComments = false) {
       await loadData(`blogs/${blogId}`, "details-template", "blogs");
       checkLogin();
+      // if (gotoComments) {
+      //   window.location.href = "#comments";
+      // }
       if (gotoComments) {
-        window.location.href = "#comments";
+        location.hash = "#comments";
+        const el = document.querySelector("#comments");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
       }
     }
+
+    window.onpopstate = (event) => {
+      const hash = location.hash;
+      const state = event.state;
+
+      if (state && state.blogId) return loadBlogsDetails(state.blogId);
+
+      switch (true) {
+        case hash.startsWith("#blog-"):
+          return loadBlogsDetails(hash.replace("#blog-", ""));
+        case hash === "#comments":
+          const el = document.querySelector("#comments");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+          return;
+        case hash.startsWith("#blogs/categories/"):
+          return loadBlogs(`blogs/categories/${hash.replace("#blogs/categories/", "")}`);
+        case hash.startsWith("#blogs/page/"):
+          return loadBlogs("blogs", hash.replace("#blogs/page/", ""));
+        default:
+          return loadBlogs("blogs");
+      }
+    };
 
     async function addComment(e) {
       e.preventDefault();

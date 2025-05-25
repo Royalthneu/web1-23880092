@@ -75,16 +75,21 @@
 
     <section id="banner-small"></section>
 
-    <section class="container py-5">
-        <h1>Gallery</h1>
-        <strong>Filter by category:</strong>
-        <ul class="nav" id="gallery-categories">
+    <div id="content"></div>
 
-        </ul>
-        <div class="row py-2" id="gallery">
+    <div id="main">
+        <section class="container py-5">
+            <h1>Gallery</h1>
+            <strong>Filter by category:</strong>
+            <ul class="nav" id="gallery-categories">
 
-        </div>
-    </section>
+            </ul>
+            <div class="row py-2" id="gallery">
+
+            </div>
+        </section>
+    </div>
+
 
     <!-- footer -->
     <footer class="text-center container-fluid text-white py-3">
@@ -171,8 +176,46 @@
 
     <script>
         checkLogin();
-        loadData('gallery-categories', 'gallery-categories-template', 'gallery-categories');
-        loadData('gallery', 'gallery-template', 'gallery');
+        if (location.hash == '' || location.hash == "#") {
+            loadPage();
+        } else {
+            loadDetails(location.hash.substr(1), 'details-template', 'content');
+        }
+
+
+        function loadPage() {
+            document.getElementById('main').style.display = 'block';
+            document.getElementById('content').style.display = 'none';
+            loadData('gallery-categories', 'gallery-categories-template', 'gallery-categories');
+            loadData('gallery', 'gallery-template', 'gallery');
+            history.replaceState({ loadPage: 1 }, null, location.href);
+        }
+
+        window.onpopstate = (event) => {
+            let state = event.state;
+
+            if (state && state.loadPage) {
+                loadPage();
+            } else if (state && state.request) {
+                loadDetails(state.request, state.templateId, state.viewId);
+            }
+            // Xử lý khi quay lại hash: #18, #19...
+            else if (location.pathname.includes("gallery.html") && location.hash) {
+                const id = location.hash.substring(1);
+                loadData(`gallery/categories/${id}`, 'gallery-template', 'gallery');
+            }
+            // Quay lại không có hash, hiển thị toàn bộ
+            else if (location.pathname.includes("gallery.html") && !location.hash) {
+                loadData('gallery', 'gallery-template', 'gallery');
+            }
+        }
+
+        async function loadDetails(request, templateId, viewId) {
+            document.getElementById('main').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            await loadData(request, templateId, viewId);
+            history.replaceState({ request, templateId, viewId }, null, location.href);
+        }
 
         function disableLink(link) {
             let links = document.querySelectorAll('#gallery-categories a');
