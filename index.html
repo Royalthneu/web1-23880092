@@ -21,7 +21,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 
     <!-- Web1 CSS -->
-    <link rel="stylesheet" href="css/23880092.css">
+    <link rel="stylesheet" href="css/23880092.min.css">
 </head>
 
 <body>
@@ -55,12 +55,15 @@
                             <a class="nav-link" href="contacts.html">Contacts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                            <a class="nav-link linkLogin" href="#" data-bs-toggle="modal"
+                                data-bs-target="#modalLogin">Login</a>
                             <a class="nav-link linkLogout" href="#" onclick="logout()" style="display:none">Logout</a>
                         </li>
                     </ul>
-                    <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch" method="GET" action="search.html">
-                        <input class="form-control ms-3 border-0" type="text" placeholder="Search" name="keyword" id="keyword" required/>
+                    <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch" method="GET"
+                        action="search.html">
+                        <input class="form-control ms-3 border-0" type="text" placeholder="Search" name="keyword"
+                            id="keyword" required />
                         <button class="btn my-2 my-sm-0 border-0" type="submit">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
@@ -141,7 +144,8 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-12">
-                        <form action="#" id="formSignUp" class="border border-3 p-3 rounded-4 overflow-auto border-black">
+                        <form action="#" id="formSignUp"
+                            class="border border-3 p-3 rounded-4 overflow-auto border-black">
                             <h3 class="text-center text-white">New letter
                                 <br>
                                 Sign up
@@ -205,12 +209,12 @@
                     <form action="#" method="post" id="formLogin" onsubmit="login(event)">
                         <h3 class="text-center">Login Form</h3>
                         <div class="mb-3">
-                            <input type="text" name="username" id="username" placeholder="Username" 
-                            class="form-control" required>
+                            <input type="text" name="username" id="username" placeholder="Username" class="form-control"
+                                required>
                         </div>
                         <div class="mb-3">
                             <input type="password" name="password" id="password" placeholder="Password"
-                            class="form-control" required>
+                                class="form-control" required>
                         </div>
                         <button type="submit" class="form-control btn">Login</button>
                     </form>
@@ -240,68 +244,23 @@
         crossorigin="anonymous"></script>
 
     <!-- handlebars.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"
         integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.runtime.min.js"
+        integrity="sha512-WUaZk9J3oknQdKPT2wAfA0gEBG2371l1ACjiynLA/X28p07n1u59VFk7q1i83/bo7N9rqVdYKlnvwAAiwL36jQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/23880092.js"></script>
+    <script src="js/index.templates.min.js"></script>
 
-    <script id="products-template" type="text/x-handlebars-template">
-            <div class="row text-center py-5">
-                {{#each data}}
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <img src="{{imagepath}}" alt="{{name}}" 
-                    onmouseover="setActiveImagepath(this, '{{imagepath}}')"
-                    onmouseout="setActiveImagepath(this, '{{imagepath}}', false)">
-                    <h3>{{name}}</h3>
-                    <p class="text-black-50">{{summary}}</p>
-                    <a class="readmore btn btn-link pt-0" href="#" 
-                    onclick="loadData('products/{{id}}', 'details-template', 'content')">Read more</a>
-                </div>
-                {{/each}}
-            </div>
-        </script>
-
-    <script id="news-template" type="text/x-handlebars-template">
-        <h1 class="text-black-10">News</h1>
-        <div class="container">
-            <div class="row py-3">
-                {{#each data}}
-                <div class="col">
-                    <div class="float-start me-3">
-                        <div class="date text-white text-center rounded-4 py-1">
-                            <h3>{{date}}</h3>
-                        </div>
-                        <a href="#" class="btn btn-link readmore ps-0" 
-                        onclick="loadData('news/{{id}}', 'details-template', 'content')">
-                            Read more</a>
-                    </div>
-                    <div>
-                        <h3>{{name}}</h3>
-                        <p class="text-black-50"></p>>{{summary}}</p>
-                    </div>
-                </div>
-                {{/each}}
-            </div>
-        </div>
-    </script>
-
-    <script id="details-template" type="text/x-handlebars-template">
-        <section class="container-fluid" id="banner-small"></section>
-        {{#each data}}
-        <section class="container py-5">
-            <h1 class="pb-3">{{name}}</h1>
-            <div class="text-black-50">{{{description}}}</div>
-        </section>
-        {{/each}}
-    </script>
+    <script src="js/23880092.min.js"></script>ß
 
     <script>
         checkLogin();
         loadData('products', 'products-template', 'products');
         loadData('news', 'news-template', 'news');
 
-        function setActiveImagepath(img, imagepath, isActive=true) {
-            if(isActive) {
+        function setActiveImagepath(img, imagepath, isActive = true) {
+            if (isActive) {
                 img.src = imagepath.replace('.', '-active.');
             } else {
                 img.src = imagepath;
