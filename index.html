@@ -59,8 +59,8 @@
                             <a class="nav-link linkLogout" href="#" onclick="logout()" style="display:none">Logout</a>
                         </li>
                     </ul>
-                    <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch">
-                        <input class="form-control ms-3 border-0" type="text" placeholder="Search" />
+                    <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch" method="GET" action="search.html">
+                        <input class="form-control ms-3 border-0" type="text" placeholder="Search" name="keyword" id="keyword" required/>
                         <button class="btn my-2 my-sm-0 border-0" type="submit">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
@@ -141,7 +141,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-12">
-                        <form action="#" id="formSignUp" class="border border-3 p-3 rounded-4 overflow-auto ">
+                        <form action="#" id="formSignUp" class="border border-3 p-3 rounded-4 overflow-auto border-black">
                             <h3 class="text-center text-white">New letter
                                 <br>
                                 Sign up
@@ -185,7 +185,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
-                <a class="nav-link linkLogout" href="#" onclick="logout()" style="display:none">Logout</a>
+                <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
             </li>
         </ul>
         <p class="text-white-50">Copyright &copy;2025 by Nguyen The Trung -
