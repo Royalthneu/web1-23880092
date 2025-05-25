@@ -170,6 +170,7 @@ footer {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 5; /* Số dòng tối đa */
+    line-clamp: 5; /* Số dòng tối đa */
     -webkit-box-orient: vertical;
 }
 
